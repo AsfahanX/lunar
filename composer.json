@@ -49,6 +49,7 @@
             "Lunar\\Database\\Seeders\\": "packages/core/database/seeders",
             "Lunar\\Database\\State\\": "packages/core/database/state",
             "Lunar\\Hub\\": "packages/admin/src",
+            "Lunar\\Hub\\Inertia\\": "packages/admin-inertia/src",
             "Lunar\\Hub\\Database\\Factories\\": "packages/admin/database/factories",
             "Lunar\\Licensing\\": "packages/licensing/src",
             "Lunar\\LivewireTables\\": "utils/livewire-tables/src/",
@@ -71,12 +72,14 @@
                 "Lunar\\ScoutDatabaseEngine\\ScoutDatabaseServiceProvider",
                 "Lunar\\Licensing\\LicensingServiceProvider",
                 "Lunar\\Hub\\AdminHubServiceProvider",
+                "Lunar\\Hub\\Inertia\\AdminHubServiceProvider",
                 "Lunar\\LunarServiceProvider"
             ]
         }
     },
     "replace": {
         "lunarphp/admin": "self.version",
+        "lunarphp/admin-inertia": "self.version",
         "lunarphp/core": "self.version",
         "lunarphp/licensing": "self.version",
         "lunarphp/livewire-tables": "self.version",
