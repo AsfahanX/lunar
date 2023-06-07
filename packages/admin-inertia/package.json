@@ -1,0 +1,29 @@
+{
+    "name": "@lunarphp/admin-inertia",
+    "version": "0.0.0",
+    "description": "Lunar Admin Hub",
+    "author": "Lunar",
+    "license": "MIT",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "vue": "^3.3.4"
+    },
+    "devDependencies": {
+        "@inertiajs/vue3": "^1.0.7",
+        "@tailwindcss/forms": "^0.5.3",
+        "@vitejs/plugin-vue": "^4.2.3",
+        "autoprefixer": "^10.4.14",
+        "axios": "^1.4.0",
+        "laravel-vite-plugin": "^0.7.8",
+        "postcss": "^8.4.24",
+        "tailwindcss": "^3.3.2",
+        "vite": "^4.3.9",
+        "ziggy-js": "^1.6.0"
+    }
+}

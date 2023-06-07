@@ -25,6 +25,8 @@
     },
     "require": {
         "php": "^8.1",
-        "lunarphp/admin": "self.version"
+        "inertiajs/inertia-laravel": "^0.6.9",
+        "lunarphp/admin": "self.version",
+        "tightenco/ziggy": "^1.6"
     }
 }

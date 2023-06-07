@@ -3,9 +3,14 @@
 namespace Lunar\Hub\Inertia\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 
 class InstallHub extends Command
 {
+    protected $commands = [
+        'vendor:publish --tag=lunar.hub.public --force',
+    ];
+
     /**
      * The name and signature of the console command.
      *
@@ -28,5 +33,10 @@ class InstallHub extends Command
     public function handle()
     {
         $this->info('Publishing assets to public folder.');
+
+        // Publish hub public assets
+        foreach ($this->commands as $command) {
+            Artisan::call($command);
+        }
     }
 }
