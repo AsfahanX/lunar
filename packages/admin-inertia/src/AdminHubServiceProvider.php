@@ -14,9 +14,6 @@ class AdminHubServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'adminhub');
-
         $this->registerPublishables();
 
         // Commands
@@ -25,6 +22,16 @@ class AdminHubServiceProvider extends ServiceProvider
                 InstallHub::class,
             ]);
         }
+
+        if (config('lunar-hub.system.stack') === 'inertia') {
+            $this->bootInertia();
+        }
+    }
+
+    protected function bootInertia()
+    {
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'adminhub');
     }
 
     /**

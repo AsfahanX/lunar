@@ -8,9 +8,16 @@ use Lunar\Hub\Models\Staff;
 
 class InstallHub extends Command
 {
-    protected $commands = [
-        'vendor:publish --tag=lunar.hub.public --force',
-        'vendor:publish --tag=lunar.livewiretables.public --force',
+    protected $publishArguments = [
+        [
+            '--tag' => 'lunar.hub.public' ,
+            '--provider' => 'Lunar\Hub\AdminHubServiceProvider' ,
+            '--force' => true,
+        ],
+        [
+            '--tag' => 'lunar.livewiretables.public' ,
+            '--force' => true,
+        ],
     ];
 
     /**
@@ -37,8 +44,8 @@ class InstallHub extends Command
         $this->info('Publishing assets to public folder.');
 
         // Publish hub public assets
-        foreach ($this->commands as $command) {
-            Artisan::call($command);
+        foreach ($this->publishArguments as $arguments) {
+            $this->callSilently('vendor:publish', $arguments);
         }
 
         if (! Staff::whereAdmin(true)->exists()) {

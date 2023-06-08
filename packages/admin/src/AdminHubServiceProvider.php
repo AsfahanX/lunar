@@ -166,6 +166,18 @@ class AdminHubServiceProvider extends ServiceProvider
             return new ActivityLogManifest();
         });
 
+        if (config('lunar-hub.system.stack') === 'livewire') {
+            $this->registerLivewire();
+        }
+    }
+
+    /**
+     * Register any livewire related services.
+     *
+     * @return void
+     */
+    public function registerLivewire()
+    {
         $tableBuilders = [
             CustomersTableBuilder::class,
             OrdersTableBuilder::class,
@@ -188,14 +200,9 @@ class AdminHubServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'adminhub');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'adminhub');
 
-        Config::set('livewire-tables.translate_namespace', 'adminhub');
-
-        $this->registerLivewireComponents();
         $this->registerAuthGuard();
         $this->registerPermissionManifest();
         $this->registerPublishables();
@@ -217,12 +224,7 @@ class AdminHubServiceProvider extends ServiceProvider
             ], 'lunar.migrations');
 
             $this->publishes([
-                __DIR__.'/../resources/views/components/branding' => resource_path('views/vendor/adminhub/components/branding'),
-                __DIR__.'/../resources/views/pdf' => resource_path('views/vendor/adminhub'),
-            ], 'lunar.hub.views');
-
-            $this->publishes([
-                __DIR__ . '/../resources/lang' => lang_path('vendor/adminhub'),
+                __DIR__.'/../resources/lang' => lang_path('vendor/adminhub'),
             ], 'lunar.hub.translations');
 
             $this->commands([
@@ -230,13 +232,40 @@ class AdminHubServiceProvider extends ServiceProvider
             ]);
         }
 
-        // Menu Builder
-        $this->registerMenuBuilder();
-
         Event::listen(
             RouteMatched::class,
             [SetStaffAuthMiddlewareListener::class, 'handle']
         );
+
+        if (config('lunar-hub.system.stack') === 'livewire') {
+            $this->bootLivewire();
+        }
+    }
+
+    /**
+     * Boot any livewire related services.
+     *
+     * @return void
+     */
+    protected function bootLivewire()
+    {
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'adminhub');
+
+        Config::set('livewire-tables.translate_namespace', 'adminhub');
+
+        $this->registerLivewireComponents();
+
+        // Commands
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../resources/views/components/branding' => resource_path('views/vendor/adminhub/components/branding'),
+                __DIR__.'/../resources/views/pdf' => resource_path('views/vendor/adminhub'),
+            ], 'lunar.hub.views');
+        }
+
+        // Menu Builder
+        $this->registerMenuBuilder();
     }
 
     protected function registerMenuBuilder()

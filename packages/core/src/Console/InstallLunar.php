@@ -27,7 +27,7 @@ class InstallLunar extends Command
      *
      * @var string
      */
-    protected $signature = 'lunar:install';
+    protected $signature = 'lunar:install {stack=livewire : The development stack that should be installed (inertia,livewire)}';
 
     /**
      * The console command description.
@@ -41,6 +41,12 @@ class InstallLunar extends Command
      */
     public function handle(): void
     {
+        if (! in_array($this->argument('stack'), ['livewire', 'inertia'])) {
+            $this->error('Invalid stack. Supported stacks are [livewire] and [inertia].');
+
+            return;
+        }
+
         $this->newLine();
         $this->comment('Installing Lunar...');
 
@@ -239,8 +245,20 @@ class InstallLunar extends Command
 
         if ($this->isHubInstalled()) {
             $this->newLine();
-            $this->line('Installing Admin Hub.');
-            $this->call('lunar:hub:install');
+            $this->line('Installing Admin Hub with '.$this->argument('stack').' "stack"');
+
+            switch ($this->argument('stack')) {
+                case 'livewire':
+                    $this->call('lunar:hub:install');
+                    break;
+
+                case 'inertia':
+                    $this->call('lunar:hub:install-inertia');
+                    break;
+
+                default:
+                    break;
+            }
         }
 
         $this->newLine();
