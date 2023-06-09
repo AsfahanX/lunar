@@ -1,13 +1,13 @@
 <script setup>
-import AppLayout from '@/Layouts/AppLayout.vue';
+import BaseLayout from '@/Layouts/BaseLayout.vue';
 import UnderConstructionLayout from '@/Layouts/UnderConstructionLayout.vue';
 </script>
 
 <template>
-    <AppLayout>
+    <BaseLayout>
 
         <!-- TODO: setup page based on packages\admin\resources\views\livewire\pages\authentication\login.blade.php -->
-        <UnderConstructionLayout description="Dashboard Page" />
+        <UnderConstructionLayout description="Password Reset Page" />
 
-    </AppLayout>
+    </BaseLayout>
 </template>
