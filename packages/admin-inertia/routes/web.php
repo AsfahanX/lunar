@@ -45,11 +45,11 @@ Route::group([
             'prefix' => 'product-types',
         ], __DIR__.'/includes/product-types.php');
 
-        // Route::group([
-        //     'prefix' => 'orders',
-        // ], __DIR__.'/includes/orders.php');
+        Route::group([
+            'prefix' => 'orders',
+        ], __DIR__.'/includes/orders.php');
 
-        // Route::group([], __DIR__.'/includes/collections.php');
+        Route::group([], __DIR__.'/includes/collections.php');
 
         // Route::group([
         //     'prefix' => 'settings',
