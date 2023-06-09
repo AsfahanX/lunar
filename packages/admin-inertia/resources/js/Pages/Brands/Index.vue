@@ -6,7 +6,7 @@ import UnderConstructionLayout from '@/Layouts/UnderConstructionLayout.vue';
 <template>
     <AppLayout>
 
-        <!-- TODO: setup page based on packages\admin\resources\views\livewire\pages\authentication\login.blade.php -->
+        <!-- TODO: setup page based on packages\admin\resources\views\livewire\pages\brands\index.blade.php -->
         <UnderConstructionLayout description="Page Brands Index" />
 
     </AppLayout>

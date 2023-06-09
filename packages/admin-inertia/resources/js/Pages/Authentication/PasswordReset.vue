@@ -6,7 +6,7 @@ import UnderConstructionLayout from '@/Layouts/UnderConstructionLayout.vue';
 <template>
     <BaseLayout>
 
-        <!-- TODO: setup page based on packages\admin\resources\views\livewire\pages\authentication\login.blade.php -->
+        <!-- TODO: setup page based on packages\admin\resources\views\livewire\pages\authentication\password-reset.blade.php -->
         <UnderConstructionLayout description="Password Reset Page" />
 
     </BaseLayout>
