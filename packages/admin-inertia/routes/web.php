@@ -35,11 +35,11 @@ Route::group([
     ], function ($router) {
         $router->get('/', fn () => Inertia::render('Dashboard'))->name('hub.index');
 
-        // Route::get('account', Account::class)->name('hub.account');
+        Route::get('account', fn () => Inertia::render('Account', ['title' => __('adminhub::account.title')]))->name('hub.account');
 
-        // Route::group([
-        //     'prefix' => 'products',
-        // ], __DIR__.'/includes/products.php');
+        Route::group([
+            'prefix' => 'products',
+        ], __DIR__.'/includes/products.php');
 
         // Route::group([
         //     'prefix' => 'product-types',
