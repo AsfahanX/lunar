@@ -55,17 +55,17 @@ Route::group([
         //     'prefix' => 'settings',
         // ], __DIR__.'/includes/settings.php');
 
-        // Route::group([
-        //     'prefix' => 'customers',
-        // ], __DIR__.'/includes/customers.php');
+        Route::group([
+            'prefix' => 'customers',
+        ], __DIR__.'/includes/customers.php');
 
-        // Route::group([
-        //     'prefix' => 'discounts',
-        // ], __DIR__.'/includes/discounts.php');
+        Route::group([
+            'prefix' => 'discounts',
+        ], __DIR__.'/includes/discounts.php');
 
-        // Route::group([
-        //     'prefix' => 'brands',
-        // ], __DIR__.'/includes/brands.php');
+        Route::group([
+            'prefix' => 'brands',
+        ], __DIR__.'/includes/brands.php');
 
         // Route::group([
         //     'prefix' => 'assets',

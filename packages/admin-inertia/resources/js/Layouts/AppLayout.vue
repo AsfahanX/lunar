@@ -19,11 +19,11 @@ defineProps({
         'hub.index',
         'hub.products.index',
         'hub.product-types.index',
-        // 'hub.brands.index',
+        'hub.brands.index',
         'hub.collection-groups.index',
         'hub.orders.index',
-        // 'hub.customers.index',
-        // 'hub.discounts.index',
+        'hub.customers.index',
+        'hub.discounts.index',
         // 'hub.settings',
     ]" :href="route(menu)" :key="menu" class="flex">
         {{ menu }}
