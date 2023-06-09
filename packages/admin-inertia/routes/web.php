@@ -41,9 +41,9 @@ Route::group([
             'prefix' => 'products',
         ], __DIR__.'/includes/products.php');
 
-        // Route::group([
-        //     'prefix' => 'product-types',
-        // ], __DIR__.'/includes/product-types.php');
+        Route::group([
+            'prefix' => 'product-types',
+        ], __DIR__.'/includes/product-types.php');
 
         // Route::group([
         //     'prefix' => 'orders',

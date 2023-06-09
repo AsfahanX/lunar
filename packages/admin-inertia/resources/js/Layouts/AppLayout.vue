@@ -18,7 +18,7 @@ defineProps({
 
         'hub.index',
         'hub.products.index',
-        // 'hub.product-types.index',
+        'hub.product-types.index',
         // 'hub.brands.index',
         // 'hub.collection-groups.index',
         // 'hub.orders.index',
