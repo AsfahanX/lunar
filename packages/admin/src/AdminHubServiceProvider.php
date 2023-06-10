@@ -232,6 +232,9 @@ class AdminHubServiceProvider extends ServiceProvider
             ]);
         }
 
+        // Menu Builder
+        $this->registerMenuBuilder();
+
         Event::listen(
             RouteMatched::class,
             [SetStaffAuthMiddlewareListener::class, 'handle']
@@ -263,9 +266,6 @@ class AdminHubServiceProvider extends ServiceProvider
                 __DIR__.'/../resources/views/pdf' => resource_path('views/vendor/adminhub'),
             ], 'lunar.hub.views');
         }
-
-        // Menu Builder
-        $this->registerMenuBuilder();
     }
 
     protected function registerMenuBuilder()
