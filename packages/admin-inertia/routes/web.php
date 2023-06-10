@@ -51,9 +51,9 @@ Route::group([
 
         Route::group([], __DIR__.'/includes/collections.php');
 
-        // Route::group([
-        //     'prefix' => 'settings',
-        // ], __DIR__.'/includes/settings.php');
+        Route::group([
+            'prefix' => 'settings',
+        ], __DIR__.'/includes/settings.php');
 
         Route::group([
             'prefix' => 'customers',
